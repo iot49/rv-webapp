@@ -1,0 +1,66 @@
+@media only screen and (max-width: 600px) {
+
+  /* bottom nav bar for small screens */
+  .navbar {
+    position: fixed;
+    bottom: 0px;
+    font-size: 14px !important;
+  }
+
+}
+
+#main {
+  margin-top: 44px;
+}
+
+#splashscreen {
+  background-image: url('/images/splash.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.entities {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 50px;
+  row-gap: 8px;
+  align-content: space-between;
+  overflow: scroll;
+}
+
+.entity {
+  block-size: fit-content;
+  font-size: 13px;
+}
+
+.entity-icon {
+  display: inline-block;
+  width: 30px;
+  color: #2196F3;
+}
+
+.entity-name-value {
+  width: calc(95vw - 35px);
+  max-width: 300px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.entity-name {
+  float: left;
+}
+
+.entity-value {
+  float: right;
+}
+
+.hidden-link {
+  visibility: hidden;
+  display: none;
+}

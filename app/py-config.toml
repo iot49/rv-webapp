@@ -1,0 +1,26 @@
+packages = [
+    "PyYAML",
+]
+
+[splashscreen]
+autoclose = true
+enabled = false
+
+[[interpreters]]
+src = "https://cdn.jsdelivr.net/pyodide/v0.21.2/full/pyodide.js"
+name = "pyodide-0.21.2"
+lang = "python"
+
+[[fetch]]
+files = [
+    "python/main.py", 
+    "python/gateway.py",
+    "python/wasm_websocket.py",
+    "python/dom_events.py",
+    "python/dom_manipulations.py",
+    "python/dom_factory.py",
+    "python/utilities/__init__.py",
+    "python/utilities/config.py",
+    "python/utilities/ids.py",
+    "python/utilities/util.py",
+]

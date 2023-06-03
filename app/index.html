@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>RV Logger</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined">
+
+<!-- needed for spinner on splash screen -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- pyscript -->
+<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+<script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+<py-config type="toml" src="./py-config.toml"></py-config>
+
+<body>
+
+  <!-- correct scrolling behavior, but breaks responsive navbar at bottom for small device (see style.css) -->
+  <div class="navbar w3-top">
+    <div id="nav-icons" class="w3-bar w3-blue w3-large" hidden>
+      <div class="w3-dropdown-hover w3-right">
+        <button class="w3-button w3-blue">
+          <i class="material-icons-outlined">menu</i>
+        </button>
+        <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
+          <a id="nav-messages" class="link w3-bar-item w3-button">
+            <i class="material-icons-outlined w3-cell-middle w3-margin-right">mail</i>
+            <span class="w3-cell-middle">Messages</span>
+          </a>
+          <a id="configuration-editor" class="w3-bar-item w3-button">
+            <i class="material-icons-outlined w3-cell-middle w3-margin-right">settings</i>
+            <span class="w3-cell-middle">Config</span>
+          </a>
+          <a id="backup-config" class="w3-bar-item w3-button">
+            <i class="material-icons-outlined w3-cell-middle w3-margin-right">cloud_download</i>
+            <span class="w3-cell-middle">Backup</span>
+          </a>
+          <a id="restore-config" class="w3-bar-item w3-button">
+            <i class="material-icons-outlined w3-cell-middle w3-margin-right">settings_system_daydream</i>
+            <span class="w3-cell-middle">Restore</span>
+          </a>
+          <a id="export-config" class="w3-bar-item w3-button hidden-link">
+            <i class="material-icons-outlined w3-cell-middle w3-margin-right">engineering</i>
+            <span class="w3-cell-middle">Export JSON</span>
+          </a>
+          <a id="nav-terminal" class="link w3-bar-item w3-button hidden-link">
+            <i class="material-icons-outlined w3-cell-middle w3-margin-right">code</i>
+            <span class="w3-cell-middle">Repl Console</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="main">
+
+    <div id="splashscreen" class="w3-content">
+      <div class="w3-text-aqua">
+        <div class="w3-xxlarge"><p>Starting up ...</p></div>
+        <!-- don't know how to do this with material-icons-outlined -->
+        <div style="margin-bottom: 30px;"><i class="fa fa-spinner w3-spin" style="font-size:64px"></i></div>
+        <div id="splash" class="w3-large">
+          <div>Loading pyscript</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="messages" hidden>
+      <h1>Messages</h1>
+    </div>
+
+    <div id="terminal" hidden>
+      <h1>Terminal</h1>
+      <py-repl>2**16</py-repl>
+      <py-terminal></py-terminal>
+    </div>
+
+
+  <py-script>import sys; sys.path.append('python'); import main; main.main()</py-script>
+  </body>
+
+</html>
