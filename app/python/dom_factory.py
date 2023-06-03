@@ -3,7 +3,7 @@ from utilities import ids
 
 
 def make_element(cls, content=None, *, tag="div"):
-    e = document.createElement("div")
+    e = document.createElement(tag)
     e.className = cls
     if content == None:
         pass
@@ -19,12 +19,28 @@ def make_element(cls, content=None, *, tag="div"):
     return e
 
 
-def make_i(icon, cls="material-icons-outlined"):
-    return make_element(cls, tag="i", content=icon)
+def make_icon(icon):
+    """Examples:
+    <i class="fa fa-spinner w3-spin" style="font-size:64px"></i>
+    <i class="material-symbols-outlined">settings_system_daydream</i>
+    """
+    if icon.startswith('fa'):
+        # fontawesome
+        text = ''
+        cls = icon
+    else:
+        # material icon
+        cls, *text = icon.rsplit(' ', 1)
+        if len(text) == 0:
+            text = cls
+            cls = 'material-icons-outlined'
+        else:
+            text = text[0]
+    return make_element(cls, content=text, tag="icon")
 
 
 def make_nav(icon):
-    i = make_i(icon)
+    i = make_icon(icon)
     return make_element("link view-link w3-bar-item w3-button", i, tag="a")
 
 
@@ -40,6 +56,6 @@ def make_entity(eid, icon, name):
     name = make_element("entity-name", name)
     value = make_element("entity-value")
     name_value = make_element("entity-name-value", ( name, value ))
-    icon = make_element("entity-icon", make_i(icon))
+    icon = make_element("entity-icon", make_icon(icon))
     entity = make_element(f"entity {ids.css(eid)}", (icon, name_value))
     return entity

@@ -23,9 +23,7 @@ def restore_config_event():
             content = await content.text()
             content = yaml.safe_load(content)
             if content == None: content = {}
-            console.log(f"FILE CONTENTS: '{content}'")
             await gateway.send({ "tag": "config_put", "value": content })
-            console.log(f"FILE SENT")
         except Exception as e:
             console.log(f"***** restore_event: {e}")
         

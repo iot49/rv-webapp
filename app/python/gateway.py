@@ -185,8 +185,20 @@ class _Gateway:
         pass
 
 
+_GATEWAY = None
+
+async def send(msg):
+    # backdoor to send without reference to gateway
+    # gateway is singleton
+    global _GATEWAY
+    await _GATEWAY._send(msg)
+
 async def gateway_task(url='ws://10.0.0.8/ws'):
-    """Communicate with gateway. Automatic reconnects. This never returns."""
-    gateway = _Gateway(url)
-    await gateway.run()
+    """Communicate with gateway. Automatic reconnects. 
+    This never returns.
+    Gateway is a SINGLETON!
+    """
+    global _GATEWAY
+    _GATEWAY = _Gateway(url)
+    await _GATEWAY.run()
 
