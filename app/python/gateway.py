@@ -8,7 +8,7 @@ from dom_events import add_nav_events
 from utilities import config, ids
 
 
-_REPORT_TRANSACTIONS = True
+_REPORT_TRANSACTIONS = False
 
 
 class _Gateway:
@@ -145,7 +145,7 @@ class _Gateway:
         last_page = show_page('splashscreen')
         
         config.set(value)
-        self._ping_interval = config.get('app', 'ping-interval') or 8
+        self._ping_interval = float(config.get('app', 'ping-interval')) or 8
 
         # update view to match new config
         self.splash_msg(f"Create views")
