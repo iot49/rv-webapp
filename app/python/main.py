@@ -5,10 +5,25 @@ from js import console
 from gateway import gateway_task
 from dom_manipulations import message
 
-GATEWAY = 'ws://10.0.0.8/ws'       # pros3
-GATEWAY = 'ws://10.0.0.105/ws'     # s3 (development)
-GATEWAY = 'ws://192.168.10.161/ws' # s3_prod on GL.iNet R
-GATEWAY = 'ws://10.0.0.176/ws'     # s3_prod
+GATEWAY = 'ws://10.0.0.176/ws'     # s3_prod @ 440 Davis Router (TPA - reliable)
+
+"""
+GL.iNet R
+- "works"
+- esp32 takes VERY long to connect - minutes
+  - ignore internal wifi error, it keeps trying and eventually succeeds (?)
+  - signal strength is not the issue
+  - once connected, it seems reliable
+- MDNS works!
+  - http://rv-logger
+  - http://rv-logger/config
+- there is a new 4.x beta software for the GL.iNet
+  - https://forum.gl-inet.com/t/wifi-constantly-disconnects-and-reconnects-on-gl-inet-gl-mt1300-beryl/26476/3
+  - Others report it solving similar issues
+  - I have not managed to install it
+"""
+
+GATEWAY = 'ws://rv-logger/ws'      # s3_prod on 
 
 
 async def main_task():

@@ -105,7 +105,7 @@ class _WasmSocket:
         if iswasm():
             # js.console.log(f"Sending message: {message}; checking for socket open {self._isopen.is_set()}")
             if not self._isopen.is_set():
-                js.console.log(f"WS disconnected, cannot send {message}")
+                js.console.log(f"WS waiting for connection to send: {message}")
             await self._isopen.wait()
             # js.console.log(f"Socket now open; sending")
             if isinstance(message, BytesLike):
