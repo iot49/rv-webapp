@@ -5,7 +5,13 @@ from js import console
 from gateway import gateway_task
 from dom_manipulations import message
 
+
+GATEWAY = 'ws://10.0.0.105/ws'     # s3 @ 440 Davis Router (TPA)
 GATEWAY = 'ws://10.0.0.176/ws'     # s3_prod @ 440 Davis Router (TPA - reliable)
+GATEWAY = 'ws://10.0.0.8/ws'       # pros3
+
+GATEWAY = 'ws://rv-logger/ws'      # mdns
+
 
 """
 GL.iNet R
@@ -23,7 +29,6 @@ GL.iNet R
   - I have not managed to install it
 """
 
-GATEWAY = 'ws://rv-logger/ws'      # s3_prod on 
 
 
 async def main_task():
